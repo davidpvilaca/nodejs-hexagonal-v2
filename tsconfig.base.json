@@ -1,0 +1,27 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": false,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["es2017", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@nodejs-hexagonal-v2/adapters": ["libs/adapters/src/index.ts"],
+      "@nodejs-hexagonal-v2/business": ["libs/business/src/index.ts"],
+      "@nodejs-hexagonal-v2/config": ["libs/config/src/index.ts"],
+      "@nodejs-hexagonal-v2/models": ["libs/models/src/index.ts"],
+      "@nodejs-hexagonal-v2/ports": ["libs/ports/src/index.ts"],
+      "@nodejs-hexagonal-v2/utils": ["libs/utils/src/index.ts"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}

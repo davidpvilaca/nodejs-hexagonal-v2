@@ -1,0 +1,53 @@
+{
+  "root": "apps/todo-lambda",
+  "sourceRoot": "apps/todo-lambda/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/node:build",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/todo-lambda",
+        "main": "apps/todo-lambda/src/main.ts",
+        "tsConfig": "apps/todo-lambda/tsconfig.app.json",
+        "assets": ["apps/todo-lambda/src/assets"]
+      },
+      "configurations": {
+        "production": {
+          "optimization": true,
+          "extractLicenses": true,
+          "generatePackageJson": true,
+          "inspect": false,
+          "fileReplacements": [
+            {
+              "replace": "apps/todo-lambda/src/environments/environment.ts",
+              "with": "apps/todo-lambda/src/environments/environment.prod.ts"
+            }
+          ]
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/node:execute",
+      "options": {
+        "buildTarget": "todo-lambda:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/todo-lambda/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/todo-lambda"],
+      "options": {
+        "jestConfig": "apps/todo-lambda/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

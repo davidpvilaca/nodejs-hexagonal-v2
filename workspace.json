@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "projects": {
+    "adapters": "libs/adapters",
+    "business": "libs/business",
+    "config": "libs/config",
+    "http-api": "apps/http-api",
+    "models": "libs/models",
+    "ports": "libs/ports",
+    "todo-lambda": "apps/todo-lambda",
+    "utils": "libs/utils"
+  }
+}

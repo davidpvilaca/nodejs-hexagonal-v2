@@ -1,0 +1,53 @@
+{
+  "root": "apps/http-api",
+  "sourceRoot": "apps/http-api/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/node:build",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/http-api",
+        "main": "apps/http-api/src/main.ts",
+        "tsConfig": "apps/http-api/tsconfig.app.json",
+        "assets": ["apps/http-api/src/assets"]
+      },
+      "configurations": {
+        "production": {
+          "optimization": true,
+          "extractLicenses": true,
+          "generatePackageJson": true,
+          "inspect": false,
+          "fileReplacements": [
+            {
+              "replace": "apps/http-api/src/environments/environment.ts",
+              "with": "apps/http-api/src/environments/environment.prod.ts"
+            }
+          ]
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/node:execute",
+      "options": {
+        "buildTarget": "http-api:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/http-api/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/http-api"],
+      "options": {
+        "jestConfig": "apps/http-api/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
